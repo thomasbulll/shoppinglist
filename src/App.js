@@ -7,9 +7,12 @@ import {set, ref, onValue, remove} from "firebase/database";
 
 
 const App = () => {
+  // Allows us to change and set the list as an array throughout the program
   const [list, setList] = useState([]);
+  // Allows us to change and set the list as an array throughout the program
   const [inputData, setInputData] = useState("");
 
+  //using use effect to show what the users list looks like live
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       //checking if the user is logged in to their google account
@@ -33,15 +36,18 @@ const App = () => {
 
 
 //using the remove operation to go into the users database and remove said item using it's ID
-const handleRemoveItem = (product_id) => {
-  remove(ref(db, `/${auth.currentUser.uid}/${product_id}`));
+const handleRemoveItem = (uidd) => {
+  remove(ref(db, `/${auth.currentUser.uid}/${uidd}`));
 }
 
 
 const handleRemoveAll = () => {
-    if (auth.currentUser.uid !== null) {
-      remove(ref(db, `/${auth.currentUser.uid}/$`));
-    }
+  //using a for loop to go arount the array called list
+  for(let i=0; i<list.length; i ++){
+    //we remove every value by finding its ID
+    remove(ref(db, `/${auth.currentUser.uid}/${list[i].uidd}`));
+  }
+   
 }
 
 
@@ -50,7 +56,7 @@ const SignInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   //using a popup to sign into google account
     signInWithPopup(auth, provider).then(result => {
-        //storing the users name
+        //storing the users name to be displayed on the page
         const name = result.user.displayName;
         localStorage.setItem("name", name);
         //catching and displaying errors 
@@ -66,11 +72,11 @@ const WriteToDatabase = () => {
     alert("Please type something")
   }else{
     //creating an id for the data about to be entered into the database
-    const product_id = uid();
+    const uidd = uid();
     //inputting the data into the database using the users ID (uid)
-      set(ref(db, `/${auth.currentUser.uid}/${product_id}`), {
+      set(ref(db, `/${auth.currentUser.uid}/${uidd}`), {
         inputData: inputData, //the data we want to put into the database
-        product_id: product_id,  //the data's ID
+        uidd: uidd,  //the data's ID
     
       });
     
@@ -101,7 +107,7 @@ const WriteToDatabase = () => {
    {list.map((inputData) => {
     return (
       <div>
-        <p id="item" onClick={() => handleRemoveItem(inputData.product_id)}>. {inputData.inputData}</p>
+        <p id="item" onClick={() => handleRemoveItem(inputData.uidd)}>. {inputData.inputData}</p>
         
       </div>
     )
