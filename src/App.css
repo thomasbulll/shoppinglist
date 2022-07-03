@@ -1,0 +1,21 @@
+.App {
+  min-height: 100hv;
+  text-align: center;
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+  
+}
+
+#item:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  
+}
+
+button{
+  border-radius: 50%;
+  color: red;
+}
+
+.list{
+  height: 100%;
+}
