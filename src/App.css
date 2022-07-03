@@ -21,7 +21,9 @@
   margin-right: 5px;
 }
 
-
+button{
+  margin-bottom: 15px;
+}
 
 .list{
   height: 100%;
@@ -37,7 +39,3 @@
 
 }
 
-.list{
- 
-  
-}
