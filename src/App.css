@@ -1,7 +1,6 @@
 .App {
-  min-height: 100hv;
+
   text-align: center;
-  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
   
 }
 
@@ -11,6 +10,17 @@
   
 }
 
+
+#RemoveAll{
+  background-color: rgb(245, 92, 87);
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#textbox{
+  margin-right: 5px;
+}
+
 button{
   border-radius: 50%;
   color: red;
@@ -18,4 +28,19 @@ button{
 
 .list{
   height: 100%;
+}
+
+
+#item{
+   margin-top: 15px;
+  width: 40%;
+   margin: auto;
+   border-bottom: 1px solid darkgray;
+   text-align: center;
+
+}
+
+.list{
+ 
+  
 }

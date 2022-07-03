@@ -51,10 +51,11 @@ const handleRemoveAll = () => {
 
 <h1>Google Shopping List</h1>
 
-<input type = "button" value="Delete Entire List" onClick={() => handleRemoveAll()} />
+
 
 <div className = "input">
-  <input type="text" value={inputData} onChange = {(event) => setInputData(event.target.value)}/>
+<input id="RemoveAll" type = "button" value="Delete Entire List" onClick={() => handleRemoveAll()} />
+  <input  id="textbox" type="text" placeholder="+ Add Item" value={inputData} onChange = {(event) => setInputData(event.target.value)}/>
   <input type ="button" value="Add to list" onClick={() => handleAddIten()}/>
 
 </div>
