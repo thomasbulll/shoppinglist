@@ -7,6 +7,7 @@
 #item:hover{
   cursor: pointer;
   transform: scale(1.05);
+  background-color: rgba(240, 248, 255, 0.815);
   
 }
 
@@ -15,15 +16,20 @@
   background-color: rgb(245, 92, 87);
   margin-right: 15px;
   margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+#RemoveAll:hover{
+  cursor: pointer;
+  text-decoration: underline;
+
 }
 
 #textbox{
   margin-right: 5px;
 }
 
-button{
-  margin-bottom: 15px;
-}
+
 
 .list{
   height: 100%;
@@ -31,7 +37,7 @@ button{
 
 
 #item{
-   margin-top: 15px;
+   margin-top: 5px;
   width: 40%;
    margin: auto;
    border-bottom: 1px solid darkgray;
@@ -39,3 +45,30 @@ button{
 
 }
 
+#GoogleSignIn:hover{
+  cursor: pointer;
+  transform: scale(1.005);
+}
+
+#WriteButton{
+  margin-left: 2px;
+  border: 1px solid;
+  border-radius: 5%;
+  height: 100%;
+}
+
+#WriteButton:hover{
+  cursor: pointer;
+}
+
+.input{
+  margin-bottom: 25px;
+  height: 2vh;
+
+}
+
+#ListText{
+  height: 100%;
+  background-color: rgb(255, 249, 249);
+  border: 0.5px solid;
+}

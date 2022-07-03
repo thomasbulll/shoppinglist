@@ -51,14 +51,15 @@ const handleRemoveAll = () => {
 }
 
 
-
 const SignInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   //using a popup to sign into google account
     signInWithPopup(auth, provider).then(result => {
         //storing the users name to be displayed on the page
         const name = result.user.displayName;
+        const photoURL = result.user.photoURL;
         localStorage.setItem("name", name);
+        localStorage.setItem("photoURL", photoURL);
         //catching and displaying errors 
     }).catch((error) => {
         alert(error);
@@ -83,9 +84,15 @@ const WriteToDatabase = () => {
       // setting the data inputted to be blank 
       setInputData("");
   }
-  
-  
 };
+
+const HandleKeyPress = (key) => {
+  if(key === "Enter"){
+    WriteToDatabase();
+  }
+}
+
+
 
   return(
 <div className="App" >
@@ -93,21 +100,23 @@ const WriteToDatabase = () => {
 
 
 <h1>Google Shopping List</h1>
-<button onClick={SignInWithGoogle}>Sign in with Google</button>
-<h3>User: {localStorage.getItem("name")}</h3>
+<img id="GoogleSignIn" src="https://www.oncrashreboot.com/images/create-apple-google-signin-buttons-quick-dirty-way-google.png" height="50" 
+width = "210" onClick={SignInWithGoogle}/>
+
+
+<h3>Signed in as: {localStorage.getItem("name")}</h3>
 
 <input type = "button" id="RemoveAll" value="Delete Entire List" onClick={() => handleRemoveAll()} />
 
 <div className = "input">
-  <input type="text" value={inputData} onChange = {(event) => setInputData(event.target.value)}/>
-  <input type ="button" value="Add to list" onClick={WriteToDatabase}/>
-
+  <input id="ListText" type="text" value={inputData} onChange = {(event) => setInputData(event.target.value)} onKeyDown={HandleKeyPress} />
+  <input id="WriteButton" type ="button" value="Add Item" onClick={WriteToDatabase}/>
 </div>
 <div className="list">
    {list.map((inputData) => {
     return (
       <div>
-        <p id="item" onClick={() => handleRemoveItem(inputData.uidd)}>. {inputData.inputData}</p>
+        <p id="item" onClick={() => handleRemoveItem(inputData.uidd)}>{inputData.inputData}</p>
         
       </div>
     )
