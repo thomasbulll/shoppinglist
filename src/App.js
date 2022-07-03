@@ -1,6 +1,7 @@
 import './App.css';
 import React , {useState} from 'react';
-
+import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+import {auth} from './Firebase'
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -44,6 +45,20 @@ const handleRemoveAll = () => {
   setList(newList);
 }
 
+
+ const SignInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  //using a popup to sign into google account
+    signInWithPopup(auth, provider).then(result => {
+        //storing the users name
+        const name = result.user.displayName;
+        //catching and displaying errors 
+    }).catch((error) => {
+        console.log(error);
+    });
+}
+
+
   return(
 <div className="App" >
 <title>Shopping List</title>
@@ -51,7 +66,7 @@ const handleRemoveAll = () => {
 
 <h1>Google Shopping List</h1>
 
-
+<button onClick={SignInWithGoogle}>Sign in with Google</button>
 
 <div className = "input">
 <input id="RemoveAll" type = "button" value="Delete Entire List" onClick={() => handleRemoveAll()} />
