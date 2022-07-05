@@ -86,31 +86,34 @@ const WriteToDatabase = () => {
   }
 };
 
-const HandleKeyPress = (key) => {
-  if(key === "Enter"){
+const HandleKeyPress = (event) => {
+  // Checking if the key pressed was enter
+  if(event.key === "Enter"){
+    //If the key pressed was enter then go to the WriteDataBase function
     WriteToDatabase();
   }
+
 }
-
-
 
   return(
 <div className="App" >
 <title>Shopping List</title>
 
+<div className="Header">
 
-<h1>Google Shopping List</h1>
+<h1 id="Title">Google Shopping List</h1>
 <img id="GoogleSignIn" src="https://www.oncrashreboot.com/images/create-apple-google-signin-buttons-quick-dirty-way-google.png" height="50" 
 width = "210" onClick={SignInWithGoogle}/>
+<h3 id="UserName">Signed in as: {localStorage.getItem("name")}</h3>
+</div>
 
 
-<h3>Signed in as: {localStorage.getItem("name")}</h3>
 
 <input type = "button" id="RemoveAll" value="Delete Entire List" onClick={() => handleRemoveAll()} />
 
 <div className = "input">
-  <input id="ListText" type="text" value={inputData} onChange = {(event) => setInputData(event.target.value)} onKeyDown={HandleKeyPress} />
-  <input id="WriteButton" type ="button" value="Add Item" onClick={WriteToDatabase}/>
+  <input id="ListText" placeholder=" Add item" type="text" value={inputData} onKeyPress={HandleKeyPress} onChange = {(event) => setInputData(event.target.value)}/>
+  
 </div>
 <div className="list">
    {list.map((inputData) => {
