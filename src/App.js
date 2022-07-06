@@ -101,21 +101,21 @@ const HandleKeyPress = (event) => {
 
 <div className="Header">
 
-<h1 id="Title">Google Shopping List</h1>
-<img id="GoogleSignIn" src="https://www.oncrashreboot.com/images/create-apple-google-signin-buttons-quick-dirty-way-google.png" height="50" 
+<h1 id="Title"><img id="GoogleLogo" alt="#" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"/> Shopping List</h1>
+<img id="GoogleSignIn" alt="#" src="https://www.oncrashreboot.com/images/create-apple-google-signin-buttons-quick-dirty-way-google.png" height="50" 
 width = "210" onClick={SignInWithGoogle}/>
 <h3 id="UserName">Signed in as: {localStorage.getItem("name")}</h3>
 </div>
 
-
-
 <input type = "button" id="RemoveAll" value="Delete Entire List" onClick={() => handleRemoveAll()} />
 
-<div className = "input">
-  <input id="ListText" placeholder=" Add item" type="text" value={inputData} onKeyPress={HandleKeyPress} onChange = {(event) => setInputData(event.target.value)}/>
+<div className="EntireList">
+
+<div className = "input-field">
+  <input id="Add-Item" placeholder=" Add item" type="text" value={inputData} onKeyPress={HandleKeyPress} onChange = {(event) => setInputData(event.target.value)}/>
   
 </div>
-<div className="list">
+<div className="list-items">
    {list.map((inputData) => {
     return (
       <div>
@@ -127,6 +127,10 @@ width = "210" onClick={SignInWithGoogle}/>
    })}
 
 </div>
+
+</div>
+
+
 
 
 
